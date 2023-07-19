@@ -8,6 +8,12 @@ This is created as a project for Helvar. The guidelines are to create this as a 
 
 - Am I going to create the functionality by myself, or will I use some UI libraries like Material UI or Chakra UI? Which library is best for this project</li>
 - Then I selected Material UI first to try, and currently having the problem of making the 0-1 mark wider because the 0-1 change is not noticeable as the project requirements.
+
+(19.07.2023)
+
+- In the past few days I tried to use few UI libraries and choose Material UI because it's under MIT.
+- Then I had problem with how to get the same visible width as 5-10 to be equal to 0-1 then Finally I did Value mapping. 0 - 0/ 1-1/ then 2-5.
+- It is working fine and I completed the slider changing according to the requirenments.
 <!-- **Link to project:** http://recruiters-love-seeing-live-demos.com/ -->
 
 <!-- ![alt tag](http://placecorgi.com/1200/650) -->
@@ -37,3 +43,98 @@ Take a look at these couple examples that I have in my own portfolio:
 **Twitter Battle:** https://github.com/alecortega/twitter-battle
 
 **Patch Panel:** https://github.com/alecortega/patch-panel -->
+
+<!-- const marks = [
+  {
+    value: 0,
+  },
+  {
+    value: 1,
+  },
+  {
+    value: 5,
+  },
+  {
+    value: 10,
+  },
+  {
+    value: 15,
+  },
+  {
+    value: 20,
+  },
+  {
+    value: 25,
+  },
+  {
+    value: 30,
+  },
+  {
+    value: 35,
+  },
+  {
+    value: 40,
+  },
+  {
+    value: 45,
+  },
+  {
+    value: 50,
+  },
+  {
+    value: 55,
+  },
+  {
+    value: 60,
+  },
+  {
+    value: 65,
+  },
+  {
+    value: 70,
+  },
+  {
+    value: 75,
+  },
+  {
+    value: 80,
+  },
+  {
+    value: 85,
+  },
+  {
+    value: 90,
+  },
+  {
+    value: 95,
+  },
+  {
+    value: 100,
+  },
+];
+];
+// const valueMappings = {
+//   0: 0,
+//   1: 1,
+//   2: 5,
+//   3: 10,
+//   4: 15,
+//   5: 20,
+//   6: 25,
+//   7: 30,
+//   8: 35,
+//   9: 40,
+//   10: 45,
+//   11: 50,
+//   12: 55,
+//   13: 60,
+//   14: 65,
+//   15: 70,
+//   16: 75,
+//   17: 80,
+//   18: 85,
+//   19: 90,
+//   20: 95,
+//   21: 100,
+// };
+ -->
