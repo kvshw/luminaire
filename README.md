@@ -6,7 +6,7 @@ This is created as a project for Helvar. The guidelines are to create this as a 
 
 (15.07.2023)
 
-- Am I going to create the functionality by myself, or will I use some UI libraries like Material UI or Chakra UI? Which library is best for this project</li>
+- Am I going to create the functionality by myself, or will I use some UI libraries like Material UI or Chakra UI? Which library is best for this project
 - Then I selected Material UI first to try, and currently having the problem of making the 0-1 mark wider because the 0-1 change is not noticeable as the project requirements.
 
 (19.07.2023)

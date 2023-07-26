@@ -59,3 +59,12 @@
   padding: 4px !important;
   width: 100px;
 }
+.cancel-button {
+  background-color: #e8e8e8 !important;
+  color: #000 !important;
+  text-transform: none !important;
+}
+.apply-button {
+  background-color: #ba122b !important;
+  text-transform: none !important;
+}
