@@ -17,7 +17,7 @@ This is created as a project for Helvar. The guidelines are to create this as a 
 
 (26.07.2023)
 
-- Completed the functionalities of the project and it's working the desired way.
+- After having a few days vacation, I Completed the functionalities of the project and it's working the desired way.
 - Values emiting was easier to implement into the project.
 - I'm having a doubt about the UI design because the PDF design and Video design is totally different. I sent a email regrading the doubt I'm having to the Helvar team. Hope I'll get a reply. Otherwise I'm planning on doing both designs.
 - I haven't done testing in cypress so I'm currently learning that to implement it.
