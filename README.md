@@ -14,7 +14,13 @@ This is created as a project for Helvar. The guidelines are to create this as a 
 - In the past few days I tried to use few UI libraries and choose Material UI because it's under MIT.
 - Then I had problem with how to get the same visible width as 5-10 to be equal to 0-1 then Finally I did Value mapping. 0 - 0/ 1-1/ then 2-5.
 - It is working fine and I completed the slider changing according to the requirenments.
-<!-- **Link to project:** http://recruiters-love-seeing-live-demos.com/ -->
+
+(26.07.2023)
+
+- Completed the functionalities of the project and it's working the desired way.
+- Values emiting was easier to implement into the project.
+- I'm having a doubt about the UI design because the PDF design and Video design is totally different.
+- <!-- **Link to project:** http://recruiters-love-seeing-live-demos.com/ -->
 
 <!-- ![alt tag](http://placecorgi.com/1200/650) -->
 
