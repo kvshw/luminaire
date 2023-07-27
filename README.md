@@ -2,7 +2,7 @@
 
 This is created as a project for Helvar. The guidelines are to create this as a react project and try to have same functionalities and styles they have provided. It seems interesting and have some exciting points. You can read more while the project is on the go and completed.
 
-## Problems Facing
+## Problems Facing & Progress
 
 (15.07.2023)
 
