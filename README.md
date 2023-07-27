@@ -19,8 +19,11 @@ This is created as a project for Helvar. The guidelines are to create this as a 
 
 - Completed the functionalities of the project and it's working the desired way.
 - Values emiting was easier to implement into the project.
-- I'm having a doubt about the UI design because the PDF design and Video design is totally different.
-- <!-- **Link to project:** http://recruiters-love-seeing-live-demos.com/ -->
+- I'm having a doubt about the UI design because the PDF design and Video design is totally different. I sent a email regrading the doubt I'm having to the Helvar team. Hope I'll get a reply. Otherwise I'm planning on doing both designs.
+- I haven't done testing in cypress so I'm currently learning that to implement it.
+- Also I'm building different compoents and adding them into the project so the App.js would be more cleaner.
+
+<!-- **Link to project:** http://recruiters-love-seeing-live-demos.com/ -->
 
 <!-- ![alt tag](http://placecorgi.com/1200/650) -->
 
