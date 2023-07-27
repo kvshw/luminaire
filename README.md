@@ -4,7 +4,7 @@
 
 This is created as a project for Helvar. The guidelines are to create this as a react project and try to have same functionalities and styles they have provided. It seems interesting and have some exciting points. You can read more while the project is on the go and completed.
 
-**Link to project:** https://luminaire-kvshw.netlify.app/
+**Link to project:** <a href="https://luminaire-kvshw.netlify.app/" target="_blank"> Luminaire </a>
 
 ## Problems Facing & Progress
 
