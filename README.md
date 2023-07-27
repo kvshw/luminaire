@@ -2,6 +2,8 @@
 
 This is created as a project for Helvar. The guidelines are to create this as a react project and try to have same functionalities and styles they have provided. It seems interesting and have some exciting points. You can read more while the project is on the go and completed.
 
+**Link to project:** https://luminaire-kvshw.netlify.app/
+
 ## Problems Facing & Progress
 
 (15.07.2023)
@@ -23,7 +25,10 @@ This is created as a project for Helvar. The guidelines are to create this as a 
 - I haven't done testing in cypress so I'm currently learning that to implement it.
 - Also I'm building different compoents and adding them into the project so the App.js would be more cleaner.
 
-<!-- **Link to project:** http://recruiters-love-seeing-live-demos.com/ -->
+(27.07.2023)
+
+- Deployed the project to netlify.
+- After the deployment I could see a few designs of elements are not showing properly specially the slider designs even though the functionalities are working fine.
 
 <!-- ![alt tag](http://placecorgi.com/1200/650) -->
 
