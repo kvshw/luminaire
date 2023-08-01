@@ -80,6 +80,23 @@ function App() {
     setChangesApplied(true);
   };
 
+  const getSliderStyles = () => ({
+    width: 300,
+    "& .MuiSlider-thumb": {
+      backgroundColor: "#ad3738",
+    },
+    "& .MuiSlider-rail": {
+      backgroundColor: "#efeeef",
+      border: "1px solid #696969",
+      height: "10px",
+    },
+    "& .MuiSlider-track": {
+      border: "0px",
+      backgroundColor: "#ad3738",
+      height: "9px",
+    },
+  });
+
   return (
     <div className="App">
       <div className="grid h-[100vmin] items-center">
@@ -100,6 +117,7 @@ function App() {
                   max={valueBreakSteps}
                   step={1}
                   onChange={handleSliderChange}
+                  sx={getSliderStyles()}
                 />
               </div>
               <div className="w-[300px] grid grid-cols-2">
@@ -115,6 +133,7 @@ function App() {
                   max={valueBreakSteps}
                   step={1}
                   onChange={handleSecondSliderChange}
+                  sx={getSliderStyles()}
                 />
               </div>
               <div className="w-[300px] grid grid-cols-2">
@@ -130,6 +149,7 @@ function App() {
                   max={valueBreakSteps}
                   step={1}
                   onChange={handleThirdSliderChange}
+                  sx={getSliderStyles()}
                 />
               </div>
             </div>

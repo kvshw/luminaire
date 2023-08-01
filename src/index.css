@@ -19,35 +19,3 @@ code {
   width: 20px;
   text-align: center;
 }
-
-.rangeSlider {
-  width: 300px !important;
-}
-
-.css-187mznn-MuiSlider-root {
-  height: 10px !important;
-}
-.css-14pt78w-MuiSlider-rail {
-  background-color: #efeeef !important;
-  border: 1px solid #696969;
-}
-.css-1gv0vcd-MuiSlider-track {
-  border: 0px !important;
-  background-color: #ad3738 !important;
-}
-.css-eg0mwd-MuiSlider-thumb {
-  background-color: #ad3738 !important;
-}
-.css-11qr2p8-MuiButtonBase-root-MuiButton-root {
-  padding: 4px !important;
-  width: 100px;
-}
-.cancel-button {
-  background-color: #e8e8e8 !important;
-  color: #000 !important;
-  text-transform: none !important;
-}
-.apply-button {
-  background-color: #ba122b !important;
-  text-transform: none !important;
-}
