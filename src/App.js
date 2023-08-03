@@ -12,20 +12,26 @@ const valueMappings = {
 
 for (let i = 2; i <= valueBreakSteps; i++) {
   valueMappings[i] = (i - 1) * 5;
-
-  if (valueMappings[i] > 100) {
-    valueMappings[i] = 100;
-  }
 }
 
+const firstValueToFind = 80;
+const eightyPositionFound = Object.keys(valueMappings).findIndex(
+  (key) => valueMappings[key] === firstValueToFind
+);
+const secondValueToFind = 20;
+const TwentyPositionFound = Object.keys(valueMappings).findIndex(
+  (key) => valueMappings[key] === secondValueToFind
+);
+
 function App() {
-  const [sliderValue, setFirstSliderValue] = useState(17);
-  const [secondSliderValue, setSecondSliderValue] = useState(5);
+  const [firstSliderValue, setFirstSliderValue] = useState(eightyPositionFound);
+  const [secondSliderValue, setSecondSliderValue] =
+    useState(TwentyPositionFound);
   const [thirdSliderValue, setThirdSliderValue] = useState(0);
   const [appliedValues, setAppliedValues] = useState(null);
   const [changesApplied, setChangesApplied] = useState(false);
 
-  const handleSliderChange = (event, newValue) => {
+  const handleFirstSliderChange = (event, newValue) => {
     setFirstSliderValue(newValue);
 
     if (newValue < secondSliderValue) {
@@ -40,7 +46,7 @@ function App() {
   const handleSecondSliderChange = (event, newValue) => {
     setSecondSliderValue(newValue);
 
-    if (newValue > sliderValue) {
+    if (newValue > firstSliderValue) {
       setFirstSliderValue(newValue);
     }
 
@@ -52,7 +58,7 @@ function App() {
   const handleThirdSliderChange = (event, newValue) => {
     setThirdSliderValue(newValue);
 
-    if (newValue > sliderValue) {
+    if (newValue > firstSliderValue) {
       setFirstSliderValue(newValue);
     }
 
@@ -61,7 +67,7 @@ function App() {
     }
   };
 
-  const mappedValue = valueMappings[sliderValue];
+  const mappedValue = valueMappings[firstSliderValue];
 
   const handleApplyClick = () => {
     // Save the applied values
@@ -99,9 +105,9 @@ function App() {
 
   return (
     <div className="App">
-      <div className="grid h-[100vmin] items-center">
-        <div className="grid justify-center ">
-          <div className="w-[350px] border-2 p-4 grid justify-center">
+      <div className="grid h-[100vh] items-center md:h-[100vmin] overflow-y-hidden justify-center">
+        <div className="grid justify-center  md:mt-0">
+          <div className="w-[95vw] border-2 p-4 grid justify-center md:w-[350px]">
             <h3 className="text-xl font-bold text-left mb-3">Edit Levels</h3>
             <div>
               <div className="w-[300px] grid grid-cols-2">
@@ -112,11 +118,11 @@ function App() {
               </div>
               <div>
                 <Slider
-                  value={sliderValue}
+                  value={firstSliderValue}
                   min={0}
                   max={valueBreakSteps}
                   step={1}
-                  onChange={handleSliderChange}
+                  onChange={handleFirstSliderChange}
                   sx={getSliderStyles()}
                 />
               </div>
