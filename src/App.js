@@ -70,14 +70,16 @@ function App() {
     }
   };
 
-  const mappedValue = valueMappings[firstSliderValue];
+  const mappedValueOccupied = valueMappings[firstSliderValue];
+  const mappedValuePowerSave = valueMappings[secondSliderValue];
+  const mappedValueMinimum = valueMappings[thirdSliderValue];
 
   const handleApplyClick = () => {
     // Save the applied values
     const levels = {
-      occupied: mappedValue,
-      powerSave: valueMappings[secondSliderValue],
-      minimum: valueMappings[thirdSliderValue],
+      occupied: mappedValueOccupied,
+      powerSave: mappedValuePowerSave,
+      minimum: mappedValueMinimum,
     };
     setAppliedValues(levels);
     setChangesApplied(true);
@@ -96,40 +98,27 @@ function App() {
           <div className="w-[95vw] border-2 p-4 grid justify-center md:w-[350px]">
             <h3 className="text-xl font-bold text-left mb-3">Edit Levels</h3>
             <div>
-              <div className="w-[300px] grid grid-cols-2">
-                <span className="text-left font-semibold">Occupied</span>
-                <span className="text-right text-[#ba122b] font-semibold">
-                  {mappedValue}%
-                </span>
-              </div>
               <div>
                 <OccupiedSlider
                   value={firstSliderValue}
                   onChange={handleFirstSliderChange}
+                  mappedValueOccupied={mappedValueOccupied}
                 />
               </div>
-              <div className="w-[300px] grid grid-cols-2">
-                <span className="text-left font-semibold">Power save</span>
-                <span className="text-right text-[#ba122b] font-semibold">
-                  {valueMappings[secondSliderValue]}%
-                </span>
-              </div>
+
               <div>
                 <PowerSaveSlider
                   value={secondSliderValue}
                   onChange={handleSecondSliderChange}
+                  mappedValuePowerSave={mappedValuePowerSave}
                 />
               </div>
-              <div className="w-[300px] grid grid-cols-2">
-                <span className="text-left font-semibold">Minimum</span>
-                <span className="text-right text-[#ba122b] font-semibold">
-                  {valueMappings[thirdSliderValue]}%
-                </span>
-              </div>
+
               <div>
                 <MinimumSlider
                   value={thirdSliderValue}
                   onChange={handleThirdSliderChange}
+                  mappedValueMinimum={mappedValueMinimum}
                 />
               </div>
             </div>

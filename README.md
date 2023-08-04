@@ -43,6 +43,10 @@ This is created as a project for Helvar. The guidelines are to create this as a 
 
 - Installed Cypress but having a few problems while doing the testing. Have to figure it out.
 - Compoent creation is in progress.
+
+(04.08.2023)
+
+- Component creation is completed. Cypress also integrated. 1st testing done with App.js which ran successfully.
 <!-- ![alt tag](http://placecorgi.com/1200/650) -->
 
 ## How It's Made:

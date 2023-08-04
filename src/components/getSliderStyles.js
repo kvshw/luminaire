@@ -1,5 +1,3 @@
-import React from "react";
-
 const getSliderStyles = () => ({
   width: 300,
   "& .MuiSlider-thumb": {
