@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import "./App.css";
-import { Slider } from "@mui/material";
+// import { Slider } from "@mui/material";
 import Button from "@mui/material/Button";
+import OccupiedSlider from "./components/OccupiedSlider";
+import PowerSaveSlider from "./components/PowerSaveSlider";
+import MinimumSlider from "./components/MinimumSlider";
 
 const valueBreakSteps = 21;
 
@@ -86,23 +89,6 @@ function App() {
     setChangesApplied(true);
   };
 
-  const getSliderStyles = () => ({
-    width: 300,
-    "& .MuiSlider-thumb": {
-      backgroundColor: "#ad3738",
-    },
-    "& .MuiSlider-rail": {
-      backgroundColor: "#efeeef",
-      border: "1px solid #696969",
-      height: "10px",
-    },
-    "& .MuiSlider-track": {
-      border: "0px",
-      backgroundColor: "#ad3738",
-      height: "9px",
-    },
-  });
-
   return (
     <div className="App">
       <div className="grid h-[100vh] items-center md:h-[100vmin] overflow-y-hidden justify-center">
@@ -117,13 +103,9 @@ function App() {
                 </span>
               </div>
               <div>
-                <Slider
+                <OccupiedSlider
                   value={firstSliderValue}
-                  min={0}
-                  max={valueBreakSteps}
-                  step={1}
                   onChange={handleFirstSliderChange}
-                  sx={getSliderStyles()}
                 />
               </div>
               <div className="w-[300px] grid grid-cols-2">
@@ -133,13 +115,9 @@ function App() {
                 </span>
               </div>
               <div>
-                <Slider
+                <PowerSaveSlider
                   value={secondSliderValue}
-                  min={0}
-                  max={valueBreakSteps}
-                  step={1}
                   onChange={handleSecondSliderChange}
-                  sx={getSliderStyles()}
                 />
               </div>
               <div className="w-[300px] grid grid-cols-2">
@@ -149,13 +127,9 @@ function App() {
                 </span>
               </div>
               <div>
-                <Slider
+                <MinimumSlider
                   value={thirdSliderValue}
-                  min={0}
-                  max={valueBreakSteps}
-                  step={1}
                   onChange={handleThirdSliderChange}
-                  sx={getSliderStyles()}
                 />
               </div>
             </div>
