@@ -10,10 +10,13 @@ function App() {
   const valueBreakSteps = 21;
   // Since the first step is 0
   const totalSteps = valueBreakSteps - 1;
+
+  // Initial percentage values for sliders
   const occupiedStartPercent = 80;
   const powerSaveStartPercent = 20;
   const minimumStartPercent = 0;
 
+  // Initialize state variables for slider values and other UI components
   const [firstSliderValue, setFirstSliderValue] = useState(
     Math.round((occupiedStartPercent / 100) * totalSteps)
   );
@@ -25,13 +28,15 @@ function App() {
   const [appliedValues, setAppliedValues] = useState(null);
   const [changesApplied, setChangesApplied] = useState(false);
 
+  // Function to map a slider position to a calculated value
   const calculateMappedValue = (position) => {
     return position <= 1 ? position : position * 5;
   };
 
+  // Handlers for slider value changes
   const handleFirstSliderChange = (event, newValue) => {
     setFirstSliderValue(newValue);
-
+    // Synchronize second and third sliders
     if (newValue < secondSliderValue) {
       setSecondSliderValue(newValue);
     }
@@ -43,7 +48,7 @@ function App() {
 
   const handleSecondSliderChange = (event, newValue) => {
     setSecondSliderValue(newValue);
-
+    // Synchronize first and third sliders
     if (newValue > firstSliderValue) {
       setFirstSliderValue(newValue);
     }
@@ -55,7 +60,7 @@ function App() {
 
   const handleThirdSliderChange = (event, newValue) => {
     setThirdSliderValue(newValue);
-
+    // Synchronize first and second sliders
     if (newValue > firstSliderValue) {
       setFirstSliderValue(newValue);
     }
@@ -65,6 +70,7 @@ function App() {
     }
   };
 
+  // Calculate mapped values for UI display
   const mappedValueOccupied = calculateMappedValue(firstSliderValue);
   const mappedValuePowerSave = calculateMappedValue(secondSliderValue);
   const mappedValueMinimum = calculateMappedValue(thirdSliderValue);

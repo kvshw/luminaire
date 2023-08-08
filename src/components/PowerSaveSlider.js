@@ -15,7 +15,7 @@ const PowerSaveSlider = ({ value, onChange, mappedValuePowerSave }) => {
         <Slider
           value={value}
           min={0}
-          max={21} // valueBreakSteps
+          max={21}
           step={1}
           onChange={onChange}
           sx={getSliderStyles()}

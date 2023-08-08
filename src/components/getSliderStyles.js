@@ -1,3 +1,4 @@
+//Created another component to get the slider styles as a "sx" prop
 const getSliderStyles = () => ({
   width: 300,
   "& .MuiSlider-thumb": {
