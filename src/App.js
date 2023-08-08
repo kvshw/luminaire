@@ -1,38 +1,33 @@
 import React, { useState } from "react";
 import "./App.css";
-// import { Slider } from "@mui/material";
-import Button from "@mui/material/Button";
-import OccupiedSlider from "./components/OccupiedSlider";
-import PowerSaveSlider from "./components/PowerSaveSlider";
-import MinimumSlider from "./components/MinimumSlider";
-
-const valueBreakSteps = 21;
-
-const valueMappings = {
-  0: 0,
-  1: 1,
-};
-
-for (let i = 2; i <= valueBreakSteps; i++) {
-  valueMappings[i] = (i - 1) * 5;
-}
-
-const firstValueToFind = 80;
-const eightyPositionFound = Object.keys(valueMappings).findIndex(
-  (key) => valueMappings[key] === firstValueToFind
-);
-const secondValueToFind = 20;
-const TwentyPositionFound = Object.keys(valueMappings).findIndex(
-  (key) => valueMappings[key] === secondValueToFind
-);
+import PowerSaveSlider from "./components/powerSaveSlider";
+import MinimumSlider from "./components/minimumSlider";
+import OccupiedSlider from "./components/occupiedSlider";
+import AppliedValues from "./components/appliedValues";
+import Buttons from "./components/buttons";
 
 function App() {
-  const [firstSliderValue, setFirstSliderValue] = useState(eightyPositionFound);
-  const [secondSliderValue, setSecondSliderValue] =
-    useState(TwentyPositionFound);
-  const [thirdSliderValue, setThirdSliderValue] = useState(0);
+  const valueBreakSteps = 21;
+  // Since the first step is 0
+  const totalSteps = valueBreakSteps - 1;
+  const occupiedStartPercent = 80;
+  const powerSaveStartPercent = 20;
+  const minimumStartPercent = 0;
+
+  const [firstSliderValue, setFirstSliderValue] = useState(
+    Math.round((occupiedStartPercent / 100) * totalSteps)
+  );
+
+  const [secondSliderValue, setSecondSliderValue] = useState(
+    Math.round((powerSaveStartPercent / 100) * totalSteps)
+  );
+  const [thirdSliderValue, setThirdSliderValue] = useState(minimumStartPercent);
   const [appliedValues, setAppliedValues] = useState(null);
   const [changesApplied, setChangesApplied] = useState(false);
+
+  const calculateMappedValue = (position) => {
+    return position <= 1 ? position : position * 5;
+  };
 
   const handleFirstSliderChange = (event, newValue) => {
     setFirstSliderValue(newValue);
@@ -70,9 +65,9 @@ function App() {
     }
   };
 
-  const mappedValueOccupied = valueMappings[firstSliderValue];
-  const mappedValuePowerSave = valueMappings[secondSliderValue];
-  const mappedValueMinimum = valueMappings[thirdSliderValue];
+  const mappedValueOccupied = calculateMappedValue(firstSliderValue);
+  const mappedValuePowerSave = calculateMappedValue(secondSliderValue);
+  const mappedValueMinimum = calculateMappedValue(thirdSliderValue);
 
   const handleApplyClick = () => {
     // Save the applied values
@@ -100,6 +95,7 @@ function App() {
             <div>
               <div>
                 <OccupiedSlider
+                  data-cy="occupied-slider"
                   value={firstSliderValue}
                   onChange={handleFirstSliderChange}
                   mappedValueOccupied={mappedValueOccupied}
@@ -108,6 +104,7 @@ function App() {
 
               <div>
                 <PowerSaveSlider
+                  data-cy="occupied-slider"
                   value={secondSliderValue}
                   onChange={handleSecondSliderChange}
                   mappedValuePowerSave={mappedValuePowerSave}
@@ -116,52 +113,24 @@ function App() {
 
               <div>
                 <MinimumSlider
+                  data-cy="occupied-slider"
                   value={thirdSliderValue}
                   onChange={handleThirdSliderChange}
                   mappedValueMinimum={mappedValueMinimum}
                 />
               </div>
             </div>
-            <div className="grid grid-cols-2 items-center justify-center mt-4">
-              <div>
-                <Button
-                  className="cancel-button"
-                  variant="contained"
-                  size="small"
-                  onClick={handleCancelClick}
-                >
-                  Cancel
-                </Button>
-              </div>
-              <div>
-                <Button
-                  className="apply-button"
-                  variant="contained"
-                  size="small"
-                  onClick={handleApplyClick}
-                >
-                  Apply
-                </Button>
-              </div>
-            </div>
+
+            <Buttons
+              onCancelClick={handleCancelClick}
+              onApplyClick={handleApplyClick}
+            />
           </div>
           <div className="h-[15vh]">
-            {changesApplied && (
-              <div className="text-center mt-3">
-                {appliedValues ? (
-                  <>
-                    <p className="font-bold">Applied Levels:</p>
-                    <span>
-                      <p>Occupied: {appliedValues.occupied}% </p>
-                      <p>Power Save: {appliedValues.powerSave}% </p>
-                      <p>Minimum: {appliedValues.minimum}% </p>
-                    </span>
-                  </>
-                ) : (
-                  <p>Changes have been canceled.</p>
-                )}
-              </div>
-            )}
+            <AppliedValues
+              changesApplied={changesApplied}
+              appliedValues={appliedValues}
+            />
           </div>
         </div>
       </div>
