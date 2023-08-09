@@ -1,13 +1,14 @@
 import React, { useState } from "react";
 import "./App.css";
-import PowerSaveSlider from "./components/powerSaveSlider";
-import MinimumSlider from "./components/minimumSlider";
-import OccupiedSlider from "./components/occupiedSlider";
+import PowerSaveSlider from "./components/PowerSaveSlider";
+import MinimumSlider from "./components/MinimumSlider";
+import OccupiedSlider from "./components/OccupiedSlider";
 import AppliedValues from "./components/appliedValues";
 import Buttons from "./components/buttons";
 
 function App() {
   const valueBreakSteps = 21;
+
   // Since the first step is 0
   const totalSteps = valueBreakSteps - 1;
 
@@ -24,6 +25,7 @@ function App() {
   const [secondSliderValue, setSecondSliderValue] = useState(
     Math.round((powerSaveStartPercent / 100) * totalSteps)
   );
+
   const [thirdSliderValue, setThirdSliderValue] = useState(minimumStartPercent);
   const [appliedValues, setAppliedValues] = useState(null);
   const [changesApplied, setChangesApplied] = useState(false);
