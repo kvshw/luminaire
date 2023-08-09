@@ -19,6 +19,7 @@ const OccupiedSlider = ({ value, onChange, mappedValueOccupied }) => {
           data-cy="occupied-slider-data"
           value={value}
           min={0}
+          // valueBreakSteps
           max={21}
           step={1}
           onChange={onChange}

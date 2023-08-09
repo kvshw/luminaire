@@ -15,7 +15,8 @@ const MinimumSlider = ({ value, onChange, mappedValueMinimum }) => {
         <Slider
           value={value}
           min={0}
-          max={21} // valueBreakSteps
+          // valueBreakSteps
+          max={21}
           step={1}
           onChange={onChange}
           sx={getSliderStyles()}
