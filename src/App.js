@@ -8,7 +8,6 @@ import Buttons from "./components/buttons";
 
 function App() {
   const valueBreakSteps = 21;
-
   // Since the first step is 0
   const totalSteps = valueBreakSteps - 1;
 
@@ -18,15 +17,15 @@ function App() {
   const minimumStartPercent = 0;
 
   // Initialize state variables for slider values and other UI components
-  const [firstSliderValue, setFirstSliderValue] = useState(
+  const [occupiedSliderValue, setOccupiedSliderValue] = useState(
     Math.round((occupiedStartPercent / 100) * totalSteps)
   );
 
-  const [secondSliderValue, setSecondSliderValue] = useState(
+  const [powerSaveSliderValue, setPowerSaveSliderValue] = useState(
     Math.round((powerSaveStartPercent / 100) * totalSteps)
   );
-
-  const [thirdSliderValue, setThirdSliderValue] = useState(minimumStartPercent);
+  const [minimumSliderValue, setMinimumSliderValue] =
+    useState(minimumStartPercent);
   const [appliedValues, setAppliedValues] = useState(null);
   const [changesApplied, setChangesApplied] = useState(false);
 
@@ -36,46 +35,46 @@ function App() {
   };
 
   // Handlers for slider value changes
-  const handleFirstSliderChange = (event, newValue) => {
-    setFirstSliderValue(newValue);
-    // Synchronize second and third sliders
-    if (newValue < secondSliderValue) {
-      setSecondSliderValue(newValue);
+  const handleOccupiedSliderChange = (event, newValue) => {
+    setOccupiedSliderValue(newValue);
+    // Synchronize PowerSave and Minimum sliders
+    if (newValue < powerSaveSliderValue) {
+      setPowerSaveSliderValue(newValue);
     }
 
-    if (newValue < thirdSliderValue) {
-      setThirdSliderValue(newValue);
-    }
-  };
-
-  const handleSecondSliderChange = (event, newValue) => {
-    setSecondSliderValue(newValue);
-    // Synchronize first and third sliders
-    if (newValue > firstSliderValue) {
-      setFirstSliderValue(newValue);
-    }
-
-    if (newValue < thirdSliderValue) {
-      setThirdSliderValue(newValue);
+    if (newValue < minimumSliderValue) {
+      setMinimumSliderValue(newValue);
     }
   };
 
-  const handleThirdSliderChange = (event, newValue) => {
-    setThirdSliderValue(newValue);
-    // Synchronize first and second sliders
-    if (newValue > firstSliderValue) {
-      setFirstSliderValue(newValue);
+  const handlePowerSaveSliderChange = (event, newValue) => {
+    setPowerSaveSliderValue(newValue);
+    // Synchronize Occupied and Minimum sliders
+    if (newValue > occupiedSliderValue) {
+      setOccupiedSliderValue(newValue);
     }
 
-    if (newValue > secondSliderValue) {
-      setSecondSliderValue(newValue);
+    if (newValue < minimumSliderValue) {
+      setMinimumSliderValue(newValue);
+    }
+  };
+
+  const handleMinimumSliderChange = (event, newValue) => {
+    setMinimumSliderValue(newValue);
+    // Synchronize Occupied and PowerSave sliders
+    if (newValue > occupiedSliderValue) {
+      setOccupiedSliderValue(newValue);
+    }
+
+    if (newValue > powerSaveSliderValue) {
+      setPowerSaveSliderValue(newValue);
     }
   };
 
   // Calculate mapped values for UI display
-  const mappedValueOccupied = calculateMappedValue(firstSliderValue);
-  const mappedValuePowerSave = calculateMappedValue(secondSliderValue);
-  const mappedValueMinimum = calculateMappedValue(thirdSliderValue);
+  const mappedValueOccupied = calculateMappedValue(occupiedSliderValue);
+  const mappedValuePowerSave = calculateMappedValue(powerSaveSliderValue);
+  const mappedValueMinimum = calculateMappedValue(minimumSliderValue);
 
   const handleApplyClick = () => {
     // Save the applied values
@@ -104,8 +103,8 @@ function App() {
               <div>
                 <OccupiedSlider
                   data-cy="occupied-slider"
-                  value={firstSliderValue}
-                  onChange={handleFirstSliderChange}
+                  value={occupiedSliderValue}
+                  onChange={handleOccupiedSliderChange}
                   mappedValueOccupied={mappedValueOccupied}
                 />
               </div>
@@ -113,8 +112,8 @@ function App() {
               <div>
                 <PowerSaveSlider
                   data-cy="occupied-slider"
-                  value={secondSliderValue}
-                  onChange={handleSecondSliderChange}
+                  value={powerSaveSliderValue}
+                  onChange={handlePowerSaveSliderChange}
                   mappedValuePowerSave={mappedValuePowerSave}
                 />
               </div>
@@ -122,8 +121,8 @@ function App() {
               <div>
                 <MinimumSlider
                   data-cy="occupied-slider"
-                  value={thirdSliderValue}
-                  onChange={handleThirdSliderChange}
+                  value={minimumSliderValue}
+                  onChange={handleMinimumSliderChange}
                   mappedValueMinimum={mappedValueMinimum}
                 />
               </div>
