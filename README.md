@@ -48,6 +48,10 @@ This is created as a project for Helvar. The guidelines are to create this as a 
 
 - Component creation is completed. Cypress also integrated. 1st testing done with App.js which ran successfully.
 
+(09.08.2023)
+
+- Referencing error was present and it was solved and edited a few name references.
+
 ## How It's Made:
 
 **Tech used:** HTML, CSS, JavaScript, React, Material UI
