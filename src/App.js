@@ -1,43 +1,43 @@
 import React, { useState } from "react";
 import "./App.css";
+// import { Slider } from "@mui/material";
+import Button from "@mui/material/Button";
 import PowerSaveSlider from "./components/PowerSaveSlider";
 import MinimumSlider from "./components/MinimumSlider";
 import OccupiedSlider from "./components/OccupiedSlider";
-import AppliedValues from "./components/appliedValues";
-import Buttons from "./components/buttons";
+
+const valueBreakSteps = 21;
+
+const valueMappings = {
+  0: 0,
+  1: 1,
+};
+
+for (let i = 2; i <= valueBreakSteps; i++) {
+  valueMappings[i] = (i - 1) * 5;
+}
+
+const firstValueToFind = 80;
+const eightyPositionFound = Object.keys(valueMappings).findIndex(
+  (key) => valueMappings[key] === firstValueToFind
+);
+const secondValueToFind = 20;
+const TwentyPositionFound = Object.keys(valueMappings).findIndex(
+  (key) => valueMappings[key] === secondValueToFind
+);
 
 function App() {
-  const valueBreakSteps = 21;
-  // Since the first step is 0
-  const totalSteps = valueBreakSteps - 1;
-
-  // Initial percentage values for sliders
-  const occupiedStartPercent = 80;
-  const powerSaveStartPercent = 20;
-  const minimumStartPercent = 0;
-
-  // Initialize state variables for slider values and other UI components
-  const [occupiedSliderValue, setOccupiedSliderValue] = useState(
-    Math.round((occupiedStartPercent / 100) * totalSteps)
-  );
-
-  const [powerSaveSliderValue, setPowerSaveSliderValue] = useState(
-    Math.round((powerSaveStartPercent / 100) * totalSteps)
-  );
-  const [minimumSliderValue, setMinimumSliderValue] =
-    useState(minimumStartPercent);
+  const [occupiedSliderValue, setOccupiedSliderValue] =
+    useState(eightyPositionFound);
+  const [powerSaveSliderValue, setPowerSaveSliderValue] =
+    useState(TwentyPositionFound);
+  const [minimumSliderValue, setMinimumSliderValue] = useState(0);
   const [appliedValues, setAppliedValues] = useState(null);
   const [changesApplied, setChangesApplied] = useState(false);
 
-  // Function to map a slider position to a calculated value
-  const calculateMappedValue = (position) => {
-    return position <= 1 ? position : position * 5;
-  };
-
-  // Handlers for slider value changes
-  const handleOccupiedSliderChange = (event, newValue) => {
+  const handleFirstSliderChange = (event, newValue) => {
     setOccupiedSliderValue(newValue);
-    // Synchronize PowerSave and Minimum sliders
+
     if (newValue < powerSaveSliderValue) {
       setPowerSaveSliderValue(newValue);
     }
@@ -47,9 +47,9 @@ function App() {
     }
   };
 
-  const handlePowerSaveSliderChange = (event, newValue) => {
+  const handleSecondSliderChange = (event, newValue) => {
     setPowerSaveSliderValue(newValue);
-    // Synchronize Occupied and Minimum sliders
+
     if (newValue > occupiedSliderValue) {
       setOccupiedSliderValue(newValue);
     }
@@ -59,9 +59,9 @@ function App() {
     }
   };
 
-  const handleMinimumSliderChange = (event, newValue) => {
+  const handleThirdSliderChange = (event, newValue) => {
     setMinimumSliderValue(newValue);
-    // Synchronize Occupied and PowerSave sliders
+
     if (newValue > occupiedSliderValue) {
       setOccupiedSliderValue(newValue);
     }
@@ -71,10 +71,9 @@ function App() {
     }
   };
 
-  // Calculate mapped values for UI display
-  const mappedValueOccupied = calculateMappedValue(occupiedSliderValue);
-  const mappedValuePowerSave = calculateMappedValue(powerSaveSliderValue);
-  const mappedValueMinimum = calculateMappedValue(minimumSliderValue);
+  const mappedValueOccupied = valueMappings[occupiedSliderValue];
+  const mappedValuePowerSave = valueMappings[powerSaveSliderValue];
+  const mappedValueMinimum = valueMappings[minimumSliderValue];
 
   const handleApplyClick = () => {
     // Save the applied values
@@ -102,42 +101,70 @@ function App() {
             <div>
               <div>
                 <OccupiedSlider
+                  id="occupied-slider"
                   data-cy="occupied-slider"
                   value={occupiedSliderValue}
-                  onChange={handleOccupiedSliderChange}
+                  onChange={handleFirstSliderChange}
                   mappedValueOccupied={mappedValueOccupied}
                 />
               </div>
 
               <div>
                 <PowerSaveSlider
-                  data-cy="occupied-slider"
                   value={powerSaveSliderValue}
-                  onChange={handlePowerSaveSliderChange}
+                  onChange={handleSecondSliderChange}
                   mappedValuePowerSave={mappedValuePowerSave}
                 />
               </div>
 
               <div>
                 <MinimumSlider
-                  data-cy="occupied-slider"
                   value={minimumSliderValue}
-                  onChange={handleMinimumSliderChange}
+                  onChange={handleThirdSliderChange}
                   mappedValueMinimum={mappedValueMinimum}
                 />
               </div>
             </div>
-
-            <Buttons
-              onCancelClick={handleCancelClick}
-              onApplyClick={handleApplyClick}
-            />
+            <div className="grid grid-cols-2 items-center justify-center mt-4">
+              <div>
+                <Button
+                  className="cancel-button"
+                  variant="contained"
+                  size="small"
+                  onClick={handleCancelClick}
+                >
+                  Cancel
+                </Button>
+              </div>
+              <div>
+                <Button
+                  className="apply-button"
+                  variant="contained"
+                  size="small"
+                  onClick={handleApplyClick}
+                >
+                  Apply
+                </Button>
+              </div>
+            </div>
           </div>
           <div className="h-[15vh]">
-            <AppliedValues
-              changesApplied={changesApplied}
-              appliedValues={appliedValues}
-            />
+            {changesApplied && (
+              <div className="text-center mt-3">
+                {appliedValues ? (
+                  <>
+                    <p className="font-bold">Applied Levels:</p>
+                    <span>
+                      <p>Occupied: {appliedValues.occupied}% </p>
+                      <p>Power Save: {appliedValues.powerSave}% </p>
+                      <p>Minimum: {appliedValues.minimum}% </p>
+                    </span>
+                  </>
+                ) : (
+                  <p>Changes have been canceled.</p>
+                )}
+              </div>
+            )}
           </div>
         </div>
       </div>
